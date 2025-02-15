@@ -5,19 +5,19 @@ import "./ProductCard.css";
 
 const ProductCard = ({ item, onAddToCart }) => {
   const [quantity, setQuantity] = useState(1);
-  const [showModal, setShowModal] = useState(false); // State to control the modal visibility
+  const [showModal, setShowModal] = useState(false);
   const navigate=useNavigate()
 
   const handleAddToCart = () => {
-    if (quantity <= 0) return; // Prevent adding items with 0 or negative quantity
+    if (quantity <= 0) return; 
     onAddToCart(item, quantity);
-    setShowModal(true); // Show the confirmation modal
+    setShowModal(true); 
   };
 
-  // Calculate the total price based on the quantity
+  
   const totalPrice = (item.price * quantity).toFixed(2);
 
-  // Handle closing the modal
+
   const closeModal = () => {
     setShowModal(false);
   };
@@ -47,7 +47,7 @@ const ProductCard = ({ item, onAddToCart }) => {
         </button>
       </div>
 
-      {/* Modal Popup for Confirmation */}
+     
       {showModal && (
         <div className="modal-overlay">
           <div className="modal">

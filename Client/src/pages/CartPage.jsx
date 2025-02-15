@@ -11,23 +11,23 @@ const CartPage = () => {
     setCart(storedCart);
   }, []);
 
-  // Remove item from the cart
+
   const handleRemoveItem = (itemId) => {
     const updatedCart = cart.filter((item) => item.id !== itemId);
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  // Handle quantity update (increment/decrement)
+
   const handleUpdateQuantity = (item, newQuantity) => {
-    if (newQuantity <= 0) return; // Prevent negative or zero quantities
+    if (newQuantity <= 0) return;
 
     const updatedCart = cart.map((cartItem) =>
       cartItem.id === item.id
         ? {
             ...cartItem,
             quantity: newQuantity,
-            totalPrice: newQuantity * cartItem.price, // Recalculate total price
+            totalPrice: newQuantity * cartItem.price, 
           }
         : cartItem
     );
@@ -36,7 +36,7 @@ const CartPage = () => {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  // Calculate the total price of the cart
+
   const totalPrice = cart.reduce((acc, item) => acc + item.totalPrice, 0);
 
   return (
